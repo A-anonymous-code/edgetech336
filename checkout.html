@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — WahabStore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner container">
+      <a href="index.html" class="logo">Edge<span>Tech</span></a>
+      <div class="nav-links">
+        <a href="index.html#restaurants">Restaurants</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#locations">Locations</a>
+        <a href="help.html">Help</a>
+        <a href="track.html">Track</a>
+        <a href="contact.html">Contact</a>
+        <a href="refund.html">Refund</a>
+      </div>
+      <div class="nav-right">
+        <button class="btn-cart" onclick="toggleCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Cart <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="btn-primary" onclick="window.location.href='index.html'">Continue Shopping</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CART SIDEBAR (same as index) -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-total">
+        <span>Subtotal</span>
+        <span id="cart-total-amount">₦0</span>
+      </div>
+      <div class="cart-delivery-note">+ Delivery fee at checkout</div>
+      <button class="btn-primary full-width" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT SECTION -->
+  <section class="checkout-section">
+    <div class="container">
+      <h1>Checkout</h1>
+      <div class="checkout-container">
+        <div class="checkout-left">
+          <div class="checkout-form">
+            <h2>Delivery Information</h2>
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" placeholder="e.g. Wahab Oke" id="c-name"/>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="e.g. 09030927900" id="c-phone"/>
+            </div>
+            <div class="form-group">
+              <label>Delivery Address</label>
+              <textarea placeholder="Enter your full delivery address" id="c-address" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" id="c-city" readonly/>
+            </div>
+          </div>
+
+          <div class="payment-methods">
+            <h2>Payment Method</h2>
+            <div class="payment-options">
+              <button class="payment-btn" onclick="selectPayment('bank')">🏦 Bank Transfer</button>
+              <button class="payment-btn" onclick="selectPayment('card')">💳 Card Payment</button>
+              <button class="payment-btn" onclick="selectPayment('delivery')">🚚 Pay on Delivery</button>
+              <button class="payment-btn" onclick="selectPayment('paystack')">💳 Paystack</button>
+            </div>
+
+            <div id="bank-transfer" class="payment-details" style="display:none;">
+              <h3>Bank Transfer</h3>
+              <p>Transfer to the following account:</p>
+              <div class="account-info">
+                <p><strong>Account Name:</strong> WahabStore Ltd</p>
+                <p><strong>Account Number:</strong> 1234567890</p>
+                <p><strong>Bank:</strong> Access Bank</p>
+              </div>
+              <div class="countdown">
+                <p>Account expires in: <span id="countdown-timer">10:00</span></p>
+              </div>
+              <button class="btn-primary" onclick="confirmPayment()">I have made this payment</button>
+            </div>
+
+            <div id="card-payment" class="payment-details" style="display:none;">
+              <h3>Card Payment</h3>
+              <div class="form-group">
+                <label>Card Number</label>
+                <input type="text" placeholder="12345678901" id="card-number" maxlength="11"/>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Expiry Date</label>
+                  <input type="text" placeholder="MM/YY" id="card-expiry" maxlength="5"/>
+                </div>
+                <div class="form-group">
+                  <label>CVV</label>
+                  <input type="text" placeholder="123" id="card-cvv" maxlength="3"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Name on Card</label>
+                <input type="text" placeholder="John Doe" id="card-name"/>
+              </div>
+              <button class="btn-primary" onclick="payWithCard()">Pay with Card</button>
+            </div>
+
+            <div id="pay-on-delivery" class="payment-details" style="display:none;">
+              <h3>Pay on Delivery</h3>
+              <p>You will pay when your order is delivered to your door.</p>
+              <button class="btn-primary" onclick="placeOrder()">Place Order</button>
+            </div>
+
+            <div id="paystack-payment" class="payment-details" style="display:none;">
+              <h3>Paystack Payment</h3>
+              <p>Secure payment via Paystack.</p>
+              <button class="btn-primary" onclick="payWithPaystack()">Pay with Paystack</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkout-right">
+          <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div id="order-items"></div>
+            <div class="summary-line">
+              <span>Subtotal</span>
+              <span id="subtotal">₦0</span>
+            </div>
+            <div class="summary-line">
+              <span>Delivery Fee</span>
+              <span>₦500</span>
+            </div>
+            <div class="summary-total">
+              <span>Total</span>
+              <span id="total">₦500</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+  <script>
+    // Load cart and location
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartUI();
+      if (selectedLocation) {
+        document.getElementById('c-city').value = selectedLocation;
+      }
+      renderOrderSummary();
+    });
+
+    function renderOrderSummary() {
+      const items = document.getElementById('order-items');
+      const subtotalEl = document.getElementById('subtotal');
+      const totalEl = document.getElementById('total');
+      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const delivery = 500;
+      const total = subtotal + delivery;
+      items.innerHTML = cart.map(i => `<div class="summary-item"><span>${i.name} x${i.qty}</span><span>₦${(i.price * i.qty).toLocaleString()}</span></div>`).join('');
+      subtotalEl.textContent = `₦${subtotal.toLocaleString()}`;
+      totalEl.textContent = `₦${total.toLocaleString()}`;
+    }
+
+    function selectPayment(method) {
+      document.querySelectorAll('.payment-details').forEach(d => d.style.display = 'none');
+      document.getElementById(method + '-payment').style.display = 'block';
+      if (method === 'bank') {
+        startCountdown();
+      }
+    }
+
+    let countdownInterval;
+    function startCountdown() {
+      let time = 10 * 60; // 10 minutes in seconds
+      const timerEl = document.getElementById('countdown-timer');
+      countdownInterval = setInterval(() => {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        time--;
+        if (time < 0) {
+          clearInterval(countdownInterval);
+          alert('Account number has expired. Please refresh the page.');
+        }
+      }, 1000);
+    }
+
+    function confirmPayment() {
+      // Simulate processing
+      setTimeout(() => {
+        window.location.href = 'track.html';
+      }, 10000); // 10 seconds
+    }
+
+    function payWithCard() {
+      // Simple validation
+      const cardNum = document.getElementById('card-number').value.replace(/\s/g, '');
+      if (cardNum.length !== 11) {
+        alert('Please enter a valid 11-digit card number.');
+        return;
+      }
+      // Simulate payment
+      alert('Payment successful!');
+      placeOrder();
+    }
+
+    function payWithPaystack() {
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0) + 500;
+      const handler = PaystackPop.setup({
+        key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your test key
+        email: 'customer@example.com',
+        amount: total * 100, // in kobo
+        currency: 'NGN',
+        callback: function(response) {
+          alert('Payment successful! Reference: ' + response.reference);
+          placeOrder();
+        },
+        onClose: function() {
+          alert('Payment cancelled.');
+        }
+      });
+      handler.openIframe();
+    }
+
+    function placeOrder() {
+      const name = document.getElementById('c-name').value.trim();
+      const phone = document.getElementById('c-phone').value.trim();
+      const address = document.getElementById('c-address').value.trim();
+      if (!name || !phone || !address) {
+        alert('Please fill in all fields.');
+        return;
+      }
+      const orderId = 'WS-' + Math.random().toString(36).substr(2, 8).toUpperCase();
+      cart = [];
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`Order placed! Order ID: ${orderId}`);
+      window.location.href = 'track.html';
+    }
+  </script>
+</body>
+</html>

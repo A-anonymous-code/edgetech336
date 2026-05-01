@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — WahabStore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner container">
+      <a href="index.html" class="logo">Edge<span>Tech</span></a>
+      <div class="nav-links">
+        <a href="#restaurants">Restaurants</a>
+        <a href="#how">How it works</a>
+        <a href="#locations">Locations</a>
+        <a href="help.html">Help</a>
+        <a href="track.html">Track</a>
+        <a href="contact.html">Contact</a>
+        <a href="refund.html">Refund</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="nav-right">
+        <button class="btn-cart" onclick="toggleCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Cart <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="btn-primary" onclick="openLocationModal()">Order Now</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-total">
+        <span>Subtotal</span>
+        <span id="cart-total-amount">₦0</span>
+      </div>
+      <div class="cart-delivery-note">+ Delivery fee at checkout</div>
+      <button class="btn-primary full-width" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-hero">
+        <h1>About EdgeTech</h1>
+        <p class="about-intro">EdgeTech is Nigeria's premier food delivery platform, connecting hungry customers with delicious local cuisine from top restaurants across Lagos, Ibadan, Port Harcourt, Oyo & Osun.</p>
+      </div>
+
+      <div class="about-content">
+        <div class="about-card">
+          <h2>How It Started</h2>
+          <p>Founded in 2023 by visionary entrepreneur OKE ABDULWAHAB ADESHINA, EdgeTech began as a simple idea to solve the daily challenge of accessing quality food quickly and conveniently. Recognizing the gap in efficient food delivery services in Nigeria, Abdulwahab launched EdgeTech with a mission to revolutionize how Nigerians experience food delivery.</p>
+        </div>
+
+        <div class="about-card">
+          <h2>Our Vision</h2>
+          <p>To become Nigeria's most trusted and preferred food delivery platform, setting the standard for excellence in customer service, food quality, and delivery speed across the nation.</p>
+        </div>
+
+        <div class="about-card">
+          <h2>Our Mission</h2>
+          <p>To provide fast, reliable, and affordable food delivery services that connect customers with their favorite local restaurants, while supporting restaurant partners in growing their businesses and creating employment opportunities.</p>
+        </div>
+
+        <div class="about-card">
+          <h2>Our Goal</h2>
+          <p>To expand our services to all major cities in Nigeria within the next 5 years, becoming the go-to platform for food delivery while maintaining our commitment to quality, speed, and customer satisfaction.</p>
+        </div>
+
+        <div class="about-card ceo-card">
+          <h2>Meet Our CEO</h2>
+          <div class="ceo-info">
+            <div class="ceo-image">👨‍💼</div>
+            <div>
+              <h3>OKE ABDULWAHAB ADESHINA</h3>
+              <p>Founder & CEO</p>
+              <p>A passionate entrepreneur with a vision to transform Nigeria's food delivery landscape. With extensive experience in technology and business development, Abdulwahab leads EdgeTech with innovation and customer-centric focus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers — WahabStore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="nav" id="navbar">
+    <div class="nav-inner container">
+      <a href="index.html" class="logo">Edge<span>Tech</span></a>
+      <div class="nav-links">
+        <a href="index.html#restaurants">Restaurants</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#locations">Locations</a>
+        <a href="help.html">Help</a>
+        <a href="track.html">Track</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="career.html">Career</a>
+        <a href="refund.html">Refund</a>
+      </div>
+      <div class="nav-right">
+        <button class="btn-cart" onclick="toggleCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Cart <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="btn-primary" onclick="window.location.href='index.html'">Order Now</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" style="padding: 8rem 1.5rem 4rem;">
+    <section style="background: white; border-radius: 24px; padding: 2.5rem; box-shadow: 0 24px 80px rgba(0,0,0,0.08);">
+      <p class="section-label">Careers</p>
+      <h1 style="margin: 0.5rem 0 1rem;">Join the EdgeTech team</h1>
+      <p style="color: #6b5a48; line-height: 1.75; max-width: 760px; margin-bottom: 2rem;">EdgeTech is growing fast and we are looking for talented people who want to help shape the future of food delivery in Nigeria.</p>
+
+      <div style="display: grid; gap: 1.5rem;">
+        <div style="background: #faf7f2; border-radius: 20px; padding: 1.75rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 0.75rem;">Why work with us?</h2>
+          <p style="color: #555; line-height: 1.7;">At EdgeTech, we value innovation, speed, and teamwork. You’ll join a team that is building a smarter and more reliable food delivery experience for customers and restaurant partners across Nigeria.</p>
+        </div>
+
+        <div style="background: #faf7f2; border-radius: 20px; padding: 1.75rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 0.75rem;">Open roles</h2>
+          <ul style="color: #555; line-height: 1.8; padding-left: 1.25rem;">
+            <li>Delivery Rider</li>
+            <li>Customer Support Representative</li>
+            <li>Restaurant Partnership Manager</li>
+            <li>Marketing and Growth Specialist</li>
+            <li>Operations Coordinator</li>
+          </ul>
+        </div>
+
+        <div style="background: #faf7f2; border-radius: 20px; padding: 1.75rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 0.75rem;">What we look for</h2>
+          <p style="color: #555; line-height: 1.7;">We want people who are dependable, customer-focused, and ready to move fast. Whether you love working with customers, managing deliveries, or helping restaurants grow, there’s a place for you at EdgeTech.</p>
+        </div>
+
+        <div style="background: #fff4e6; border-radius: 20px; padding: 1.75rem; border: 1px solid #f8dfcd;">
+          <h2 style="margin-bottom: 0.75rem;">How to apply</h2>
+          <p style="color: #555; line-height: 1.7;">Send your CV or application message to <strong>edgetech336@gmail.com</strong> or WhatsApp <strong>09162124455</strong>. Include your name, the role you want, and a short explanation of why you’d be a great fit.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

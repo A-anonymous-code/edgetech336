@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Your Order — WahabStore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner container">
+      <a href="index.html" class="logo">Edge<span>Tech</span></a>
+      <div class="nav-links">
+        <a href="index.html#restaurants">Restaurants</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#locations">Locations</a>
+        <a href="help.html">Help</a>
+        <a href="track.html">Track</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="refund.html">Refund</a>
+      </div>
+      <div class="nav-right">
+        <button class="btn-cart" onclick="toggleCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Cart <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="btn-primary" onclick="window.location.href='index.html'">Order Now</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-total">
+        <span>Subtotal</span>
+        <span id="cart-total-amount">₦0</span>
+      </div>
+      <div class="cart-delivery-note">+ Delivery fee at checkout</div>
+      <button class="btn-primary full-width" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- TRACK SECTION -->
+  <section class="track-section">
+    <div class="container">
+      <div class="track-hero">
+        <h1>Track Your Order</h1>
+        <p>Enter your order ID to see real-time updates on your food delivery.</p>
+      </div>
+
+      <div class="track-form">
+        <div class="form-group">
+          <label for="order-id">Order ID</label>
+          <input type="text" id="order-id" placeholder="e.g. WS-ABC123" />
+        </div>
+        <button class="btn-primary" onclick="trackOrder()">Track Order</button>
+      </div>
+
+      <div class="tracking-result" id="tracking-result" style="display: none;">
+        <div class="order-info">
+          <h2>Order #<span id="display-order-id"></span></h2>
+          <p>Estimated delivery: <strong>30–45 minutes</strong></p>
+        </div>
+
+        <div class="tracking-timeline">
+          <div class="timeline-item completed" id="step-1">
+            <div class="timeline-icon">🍽️</div>
+            <div class="timeline-content">
+              <h3>Order Received</h3>
+              <p>Restaurant has received your order and is preparing it.</p>
+              <small id="time-1">2 minutes ago</small>
+            </div>
+          </div>
+
+          <div class="timeline-item" id="step-2">
+            <div class="timeline-icon">⏳</div>
+            <div class="timeline-content">
+              <h3>Waiting for Rider</h3>
+              <p>Food is ready! Waiting for a delivery rider to pick it up.</p>
+              <small id="time-2">In progress...</small>
+            </div>
+          </div>
+
+          <div class="timeline-item" id="step-3">
+            <div class="timeline-icon">🚴</div>
+            <div class="timeline-content">
+              <h3>On the Way</h3>
+              <p>Your rider has collected the order and is heading to your location.</p>
+              <small id="time-3">Pending...</small>
+            </div>
+          </div>
+
+          <div class="timeline-item" id="step-4">
+            <div class="timeline-icon">🏠</div>
+            <div class="timeline-content">
+              <h3>Almost There</h3>
+              <p>Your rider is about to arrive at your delivery address.</p>
+              <small id="time-4">Pending...</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="rider-info" id="rider-info" style="display: none;">
+          <h3>Your Rider</h3>
+          <div class="rider-card">
+            <div class="rider-avatar">🚴‍♂️</div>
+            <div class="rider-details">
+              <strong id="rider-name">Adebayo Johnson</strong>
+              <p id="rider-phone">0903 456 7890</p>
+              <p id="rider-rating">⭐ 4.8 (127 deliveries)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+  <script>
+    // Load cart
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartUI();
+    });
+
+    function trackOrder() {
+      const orderId = document.getElementById('order-id').value.trim();
+      if (!orderId) {
+        alert('Please enter your order ID.');
+        return;
+      }
+
+      // For demo purposes, accept any order ID starting with WS-
+      if (!orderId.startsWith('WS-')) {
+        alert('Invalid order ID format. Order IDs start with WS-.');
+        return;
+      }
+
+      document.getElementById('display-order-id').textContent = orderId;
+      document.getElementById('tracking-result').style.display = 'block';
+
+      // Simulate tracking progress
+      simulateTracking();
+    }
+
+    function simulateTracking() {
+      const steps = [
+        { id: 'step-1', time: 'time-1', delay: 0 },
+        { id: 'step-2', time: 'time-2', delay: 2000 },
+        { id: 'step-3', time: 'time-3', delay: 5000 },
+        { id: 'step-4', time: 'time-4', delay: 8000 }
+      ];
+
+      steps.forEach((step, index) => {
+        setTimeout(() => {
+          document.getElementById(step.id).classList.add('completed');
+          if (index === 2) {
+            document.getElementById('rider-info').style.display = 'block';
+          }
+        }, step.delay);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Press — WahabStore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="nav" id="navbar">
+    <div class="nav-inner container">
+      <a href="index.html" class="logo">Edge<span>Tech</span></a>
+      <div class="nav-links">
+        <a href="index.html#restaurants">Restaurants</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#locations">Locations</a>
+        <a href="help.html">Help</a>
+        <a href="track.html">Track</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="press.html">Press</a>
+        <a href="career.html">Career</a>
+        <a href="refund.html">Refund</a>
+      </div>
+      <div class="nav-right">
+        <button class="btn-cart" onclick="toggleCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Cart <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="btn-primary" onclick="window.location.href='index.html'">Order Now</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" style="padding: 8rem 1.5rem 4rem;">
+    <section style="background: white; border-radius: 24px; padding: 2.5rem; box-shadow: 0 24px 80px rgba(0,0,0,0.08);">
+      <p class="section-label">Press</p>
+      <h1 style="margin: 0.5rem 0 1rem;">EdgeTech in the news</h1>
+      <p style="color: #6b5a48; line-height: 1.75; max-width: 760px; margin-bottom: 2rem;">EdgeTech is transforming food delivery in Nigeria with faster service, secure payments, and partnerships that support local restaurants and riders. Below is the latest press story about our mission, growth, and impact.</p>
+
+      <div style="display: grid; gap: 1.75rem;">
+        <article style="background: #faf7f2; border-radius: 20px; padding: 2rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 1rem;">A new standard for food delivery in Nigeria</h2>
+          <p style="color: #555; line-height: 1.8;">Launched in 2023 by OKE ABDULWAHAB ADESHINA, EdgeTech began as a response to unreliable delivery and complicated payment experiences. Today, the platform is setting a new standard in Nigeria by combining restaurant partnerships, easy checkout, and live order tracking. EdgeTech provides customers with a fast, dependable service while helping restaurants expand their reach without extra complexity.</p>
+        </article>
+
+        <article style="background: white; border-radius: 20px; padding: 2rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 1rem;">Supporting local restaurants and riders</h2>
+          <p style="color: #555; line-height: 1.8;">EdgeTech is more than a delivery app — it is a platform built to support local businesses across Lagos, Ibadan, Port Harcourt, Oyo, and Osun. Restaurants benefit from reliable order processing and consistent customer flow, while riders get the tools they need to deliver more orders on time. This partnership-first approach creates value for every part of the delivery chain.</p>
+          <p style="color: #555; line-height: 1.8;">By working with trusted restaurant partners and investing in rider support, EdgeTech ensures every delivery meets high quality standards. This has led to stronger relationships, repeat customers, and measurable growth across the cities it serves.</p>
+        </article>
+
+        <article style="background: #faf7f2; border-radius: 20px; padding: 2rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 1rem;">Innovation in payments and tracking</h2>
+          <p style="color: #555; line-height: 1.8;">Customers can choose from bank transfer, card payment, Paystack, or cash on delivery. EdgeTech’s flexible checkout options are designed to match real user needs while keeping every order secure. On the tracking side, customers can follow the order from restaurant acceptance to rider pickup and arrival, giving them peace of mind every step of the way.</p>
+        </article>
+
+        <article style="background: white; border-radius: 20px; padding: 2rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 1rem;">What’s next for EdgeTech</h2>
+          <p style="color: #555; line-height: 1.8;">EdgeTech plans to expand to more cities, add new restaurant partners, and improve delivery intelligence so customers get their food faster. The company’s long-term goal is to become Nigeria’s most trusted food delivery platform, offering reliable service without sacrificing quality.</p>
+          <p style="color: #555; line-height: 1.8;">For press inquiries, partnerships, or media requests, please contact our team at <strong>press@edgetech.ng</strong>.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

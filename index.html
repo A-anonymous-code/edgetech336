@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WahabStore — Food Delivered Fast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner container">
+      <a href="index.html" class="logo">Edge<span>Tech</span></a>
+      <div class="nav-links">
+        <a href="#restaurants">Restaurants</a>
+        <a href="#how">How it works</a>
+        <a href="#locations">Locations</a>
+        <a href="help.html">Help</a>
+        <a href="track.html">Track</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="press.html">Press</a>
+        <a href="career.html">Career</a>
+        <a href="rider.html">Become a Rider</a>
+        <a href="refund.html">Refund</a>
+      </div>
+      <div class="nav-right">
+        <button class="btn-cart" onclick="toggleCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Cart <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="btn-primary" onclick="openLocationModal()">Order Now</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="hero-label">🍗 Nigeria's Favourite Food Delivery</p>
+        <h1>Hungry? <br/><em>We've got you.</em></h1>
+        <p class="hero-sub">Order from the best local restaurants — delivered hot, fast, and fresh to your door across Lagos, Ibadan, Port Harcourt, Oyo & Osun.</p>
+        <div class="hero-search">
+          <div class="location-select" onclick="openLocationModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span id="selected-location">Select your location</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <button class="btn-primary large" onclick="scrollToRestaurants()">Find Food</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>10+</strong><span>Restaurants</span></div>
+          <div class="stat"><strong>5</strong><span>Cities</span></div>
+          <div class="stat"><strong>30min</strong><span>Avg. Delivery</span></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-card floating">
+          <div class="hc-emoji">🍗</div>
+          <div><strong>Chicken Republic</strong><p>Crispy Burger + Chips</p></div>
+          <div class="hc-price">₦3,500</div>
+        </div>
+        <div class="hero-card floating delay-1">
+          <div class="hc-emoji">🍕</div>
+          <div><strong>Dominion Pizza</strong><p>Pepperoni Sharwama</p></div>
+          <div class="hc-price">₦4,200</div>
+        </div>
+        <div class="hero-card floating delay-2">
+          <div class="hc-emoji">🥧</div>
+          <div><strong>Mr. Biggs</strong><p>Meat Pie + Drink</p></div>
+          <div class="hc-price">₦1,800</div>
+        </div>
+        <div class="hero-blob"></div>
+      </div>
+    </div>
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#faf7f2"/></svg>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Simple & Fast</p>
+        <h2>How Edge Tech Works</h2>
+      </div>
+      <div class="how-steps">
+        <div class="step">
+          <div class="step-icon">📍</div>
+          <h3>Choose Location</h3>
+          <p>Pick from our 5 available cities across Nigeria</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-icon">🍽️</div>
+          <h3>Pick Restaurant</h3>
+          <p>Browse menus from 10+ top restaurants near you</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-icon">🛒</div>
+          <h3>Add to Cart</h3>
+          <p>Customize your order and add items to cart</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-icon">🚴</div>
+          <h3>Fast Delivery</h3>
+          <p>Get your food delivered hot in under 45 minutes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESTAURANTS -->
+  <section class="restaurants-section" id="restaurants">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Top Picks</p>
+        <h2>Restaurants Near You</h2>
+        <p class="section-sub">Choose a location first to see available restaurants</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="tab active" onclick="filterRestaurants('all', this)">All</button>
+        <button class="tab" onclick="filterRestaurants('chicken', this)">🍗 Chicken</button>
+        <button class="tab" onclick="filterRestaurants('pizza', this)">🍕 Pizza & Shawarma</button>
+        <button class="tab" onclick="filterRestaurants('local', this)">🍲 Local</button>
+        <button class="tab" onclick="filterRestaurants('pastry', this)">🥐 Pastry</button>
+        <button class="tab" onclick="filterRestaurants('fast-food', this)">🍔 Fast Food</button>
+      </div>
+
+      <div class="restaurants-grid" id="restaurants-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="locations-section" id="locations">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">We Deliver To</p>
+        <h2>Our Locations</h2>
+      </div>
+      <div class="locations-grid">
+        <div class="location-card active-city" onclick="setLocation('Lagos')">
+          <div class="loc-icon">🌊</div>
+          <h3>Lagos</h3>
+          <p>All areas — VI, Lekki, Surulere, Ikeja & more</p>
+          <span class="loc-badge">Most Popular</span>
+        </div>
+        <div class="location-card" onclick="setLocation('Ibadan')">
+          <div class="loc-icon">🏛️</div>
+          <h3>Ibadan</h3>
+          <p>Bodija, Ring Road, UI, Challenge, Olodo & more</p>
+        </div>
+        <div class="location-card" onclick="setLocation('Port Harcourt')">
+          <div class="loc-icon">⚓</div>
+          <h3>Port Harcourt</h3>
+          <p>GRA, Rumuola, Old GRA & more</p>
+        </div>
+        <div class="location-card" onclick="setLocation('Oyo')">
+          <div class="loc-icon">🌿</div>
+          <h3>Oyo</h3>
+          <p>Ogbomosho, Oyo</p>
+        </div>
+        <div class="location-card" onclick="setLocation('Osun')">
+          <div class="loc-icon">🌸</div>
+          <h3>Osun</h3>
+          <p>Osogbo, Ilesa, Ife & environs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO BANNER -->
+  <section class="promo-banner">
+    <div class="container promo-inner">
+      <div>
+        <h2>First Order? Get 20% Off! 🎉</h2>
+        <p>Use code <strong>WAHAB20</strong> at checkout on your first order</p>
+      </div>
+      <button class="btn-white" onclick="scrollToRestaurants()">Order Now</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Edge<span>Tech</span></a>
+        <p>Nigeria's favourite food delivery platform. Fresh, fast, and always satisfying.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="career.html">Careers</a>
+        <a href="rider.html">Become a Rider</a>
+        <a href="blog.html">Blog</a>
+        <a href="press.html">Press</a>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <a href="help.html">Help Center</a>
+        <a href="track.html">Track Order</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="refund.html">Refund Policy</a>
+      </div>
+      <div class="footer-links">
+        <h4>Partner With Us</h4>
+        <a href="#">List Your Restaurant</a>
+        <a href="#">Become a Rider</a>
+        <a href="#">Advertise</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2025 Edgetech. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter/X</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LOCATION MODAL -->
+  <div class="modal-overlay" id="location-modal" onclick="closeLocationModal(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeLocationModal()">✕</button>
+      <h2>Choose Your City</h2>
+      <p>We'll show restaurants available in your area</p>
+      <div class="modal-locations">
+        <button class="modal-loc-btn" onclick="setLocation('Lagos')">🌊 Lagos</button>
+        <button class="modal-loc-btn" onclick="setLocation('Ibadan')">🏛️ Ibadan</button>
+        <button class="modal-loc-btn" onclick="setLocation('Port Harcourt')">⚓ Port Harcourt</button>
+        <button class="modal-loc-btn" onclick="setLocation('Oyo')">🌿 Oyo</button>
+        <button class="modal-loc-btn" onclick="setLocation('Osun')">🌸 Osun</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESTAURANT MODAL -->
+  <div class="modal-overlay" id="restaurant-modal" onclick="closeRestaurantModal(event)">
+    <div class="modal large-modal" id="restaurant-modal-content">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cart-body">
+      <div class="cart-empty">
+        <div style="font-size:3rem">🛒</div>
+        <p>Your cart is empty</p>
+        <small>Add items from a restaurant to get started</small>
+      </div>
+    </div>
+    <div class="cart-footer" id="cart-footer" style="display:none">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cart-total-amount">₦0</strong>
+      </div>
+      <div class="cart-delivery-note">+ Delivery fee at checkout</div>
+      <button class="btn-primary full-width" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal-overlay" id="checkout-modal" onclick="closeCheckoutModal(event)">
+    <div class="modal checkout-modal">
+      <button class="modal-close" onclick="closeCheckoutModal()">✕</button>
+      <h2>Complete Your Order</h2>
+      <div class="checkout-form">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="e.g. Wahab oke" id="c-name"/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="e.g. 09030927900" id="c-phone"/>
+        </div>
+        <div class="form-group">
+          <label>Delivery Address</label>
+          <textarea placeholder="Enter your full delivery address" id="c-address" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" id="c-city" readonly/>
+        </div>
+        <div class="checkout-summary" id="checkout-summary"></div>
+        <div class="form-group">
+          <label>Payment Method</label>
+          <div class="payment-options">
+            <label class="pay-opt"><input type="radio" name="pay" value="card" checked/> 💳 Card Payment</label>
+            <label class="pay-opt"><input type="radio" name="pay" value="transfer"/> 🏦 Bank Transfer</label>
+            <label class="pay-opt"><input type="radio" name="pay" value="cash"/> 💵 Cash on Delivery</label>
+          </div>
+        </div>
+        <button class="btn-primary full-width" onclick="placeOrder()">Place Order 🎉</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal success-modal">
+      <div class="success-icon">✅</div>
+      <h2>Order Placed!</h2>
+      <p>Your food is being prepared. Estimated delivery: <strong>30–45 mins</strong></p>
+      <p class="order-id" id="order-id"></p>
+      <button class="btn-primary" onclick="closeSuccessModal()">Continue Shopping</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

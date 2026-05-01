@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help — WahabStore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="nav" id="navbar">
+    <div class="nav-inner container">
+      <a href="index.html" class="logo">Edge<span>Tech</span></a>
+      <div class="nav-links">
+        <a href="index.html#restaurants">Restaurants</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#locations">Locations</a>
+        <a href="help.html">Help</a>
+        <a href="track.html">Track</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="refund.html">Refund</a>
+      </div>
+      <div class="nav-right">
+        <button class="btn-cart" onclick="toggleCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Cart <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="btn-primary" onclick="window.location.href='index.html'">Order Now</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" style="padding: 8rem 1.5rem 4rem;">
+    <section style="background: white; border-radius: 24px; padding: 2.5rem; box-shadow: 0 24px 80px rgba(0,0,0,0.08);">
+      <p class="section-label">Help Center</p>
+      <h1 style="margin: 0.5rem 0 1rem;">How can we help you?</h1>
+      <p style="color: #6b5a48; line-height: 1.75; max-width: 760px; margin-bottom: 2rem;">Need help with your order, payment, delivery, or account? Here are the most common questions and easy steps to get support quickly.</p>
+
+      <div style="display: grid; gap: 1.5rem;">
+        <div style="background: #faf7f2; border-radius: 20px; padding: 1.75rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 0.75rem;">1. Track your order</h2>
+          <p style="color: #555; line-height: 1.7;">If you already placed an order, go to the <a href="track.html">Track</a> page and enter your order ID. You can see updates from when the restaurant receives the order to when the rider is almost at your door.</p>
+        </div>
+        <div style="background: #faf7f2; border-radius: 20px; padding: 1.75rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 0.75rem;">2. Payment questions</h2>
+          <p style="color: #555; line-height: 1.7;">Choose your payment method at checkout: Bank Transfer, Card, Pay on Delivery, or Paystack. For bank transfer, follow the account details and confirm once your payment is complete.</p>
+        </div>
+        <div style="background: #faf7f2; border-radius: 20px; padding: 1.75rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 0.75rem;">3. Delivery and address help</h2>
+          <p style="color: #555; line-height: 1.7;">Enter your full delivery address clearly at checkout. Include landmarks or building names to help the rider find you faster. If your rider is delayed, check the Track page for live updates.</p>
+        </div>
+        <div style="background: #faf7f2; border-radius: 20px; padding: 1.75rem; border: 1px solid #f0e7dc;">
+          <h2 style="margin-bottom: 0.75rem;">4. Need support?</h2>
+          <p style="color: #555; line-height: 1.7;">For live help, message us on WhatsApp at <strong>09162124455</strong> or email <strong>support@edgetech.ng</strong>. Our support team is ready to assist with orders, refunds, or any questions.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem; display: grid; gap: 1rem;">
+        <div style="background: #fff4e6; border-radius: 20px; padding: 1.75rem; border: 1px solid #f8dfcd;">
+          <h2 style="margin-bottom: 0.75rem;">Quick tips for a smooth order</h2>
+          <ul style="color: #555; line-height: 1.8; padding-left: 1.25rem;">
+            <li>Choose a restaurant near your location for faster delivery.</li>
+            <li>Write a clear delivery address and add a nearby landmark.</li>
+            <li>Keep your phone available so the rider can contact you.</li>
+            <li>If payment fails, try another method or contact support.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
